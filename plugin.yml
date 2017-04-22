@@ -1,0 +1,37 @@
+name: xCrate
+author: ChrisPrime
+version: 1.0.0
+api: 3.0.0
+main: xcrate\ExCrate
+
+commands:
+ addcrate:
+  permission: xcrate.command.addcrate
+  description: "Add a new crate"
+  usage: "/addcrate"
+ removecrate:
+  permission: xcrate.command.removecrate
+  description: "Remove a crate"
+  usage: "/removecrate"
+  aliases: ["/remcrate"]
+ editcrate:
+  permission: xcrate.command.editcrate
+  description: "Edit crate's properties"
+  usage: "/editcrate"
+  aliases: "/ecrate"
+
+permission:
+  xcrate.*:
+    default: false
+    children:
+      xcrate.command.*:
+        default: false
+        children:
+          xcrate.command.addcrate:
+            default: op
+          xcrate.command.removecrate:
+            default: op
+          xcrate.command.editcrate:
+            default: op
+      xcrate.use:
+        default: true
